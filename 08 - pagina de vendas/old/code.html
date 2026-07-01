@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark scroll-smooth" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chronos Elite - Smartwatch Premium</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;family=Geist:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary-fixed-variant": "#474649",
+                        "surface-container": "#1e2023",
+                        "surface-container-highest": "#333539",
+                        "on-primary": "#002e69",
+                        "primary": "#adc6ff",
+                        "on-primary-fixed-variant": "#004493",
+                        "secondary-container": "#474649",
+                        "inverse-primary": "#005bc1",
+                        "on-surface-variant": "#c1c6d7",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-tertiary": "#303032",
+                        "on-primary-fixed": "#001a41",
+                        "secondary-fixed-dim": "#c8c6c8",
+                        "surface": "#111317",
+                        "on-secondary": "#303032",
+                        "on-secondary-fixed": "#1b1b1d",
+                        "secondary": "#c8c6c8",
+                        "on-tertiary-container": "#29292b",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-dim": "#111317",
+                        "on-secondary-fixed-variant": "#474649",
+                        "on-secondary-container": "#b6b4b7",
+                        "on-surface": "#e2e2e7",
+                        "inverse-on-surface": "#2e3034",
+                        "on-background": "#e2e2e7",
+                        "surface-tint": "#adc6ff",
+                        "background": "#111317",
+                        "inverse-surface": "#e2e2e7",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#333539",
+                        "on-primary-container": "#00285c",
+                        "surface-container-high": "#282a2e",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#1b1b1d",
+                        "surface-bright": "#37393d",
+                        "tertiary": "#c8c6c8",
+                        "primary-container": "#4b8eff",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#e4e2e4",
+                        "outline-variant": "#414755",
+                        "surface-container-low": "#1a1c1f",
+                        "outline": "#8b90a0",
+                        "secondary-fixed": "#e4e2e4",
+                        "tertiary-container": "#919092",
+                        "tertiary-fixed-dim": "#c8c6c8"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "stack-sm": "16px",
+                        "stack-md": "32px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "stack-lg": "48px",
+                        "section-padding-mobile": "64px",
+                        "section-padding-desktop": "120px"
+                    },
+                    fontFamily: {
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-caps": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    fontSize: {
+                        "display-lg-mobile": ["40px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "label-caps": ["12px", { lineHeight: "1", letterSpacing: "0.1em", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "display-lg": ["64px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "headline-md": ["32px", { lineHeight: "1.3", fontWeight: "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glow-effect {
+            box-shadow: 0px 4px 20px rgba(0, 122, 255, 0.3);
+        }
+        .glow-effect:hover {
+            box-shadow: 0px 6px 28px rgba(0, 122, 255, 0.5);
+            transform: scale(1.02);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .glass-card {
+            background: linear-gradient(135deg, rgba(28, 28, 30, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md">
+<div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+<div class="font-display-lg-mobile text-display-lg-mobile tracking-tighter text-on-surface">Chronos Elite</div>
+<div class="hidden md:flex gap-stack-md items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md scale-98 active:scale-95 transition-all" href="#design">Design</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md scale-98 active:scale-95 transition-all" href="#saude">Saúde</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md scale-98 active:scale-95 transition-all" href="#especificacoes">Especificações</a>
+</div>
+<button class="bg-primary-container text-on-primary-container font-body-md px-6 py-2 rounded-full glow-effect transition-all scale-98 active:scale-95 hidden md:block">
+                Comprar Agora
+            </button>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-section-padding-desktop pb-section-padding-desktop overflow-hidden">
+<div class="absolute inset-0 z-0 opacity-20">
+<div class="absolute inset-0 bg-gradient-to-b from-primary-container/20 to-background mix-blend-overlay"></div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter relative z-10 grid md:grid-cols-12 gap-stack-lg items-center">
+<div class="md:col-span-6 flex flex-col gap-stack-md reveal">
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase">LANÇAMENTO EXCLUSIVO</span>
+<h1 class="font-display-lg text-display-lg md:text-[80px] leading-tight font-bold">
+                    Conexão Total,<br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container">Saúde em Foco.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                    O Smartwatch que Define seu Estilo de Vida. Precisão técnica aliada a um design impecável para quem exige o máximo.
+                </p>
+<div class="flex flex-col sm:flex-row gap-stack-sm items-center mt-4">
+<button class="w-full sm:w-auto bg-primary-container text-on-primary-container font-bold px-8 py-4 rounded-full glow-effect transition-all text-lg flex items-center justify-center gap-2">
+                        Garantir o Meu
+                        <span class="material-symbols-outlined">arrow_right_alt</span>
+</button>
+<div class="flex flex-col items-center sm:items-start pl-4">
+<span class="text-on-surface-variant line-through text-sm">De R$ 289,00</span>
+<span class="text-primary font-bold text-2xl">Por R$ 187,00</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-6 relative reveal" style="transition-delay: 200ms;">
+<div class="absolute inset-0 bg-primary-container/10 blur-[100px] rounded-full"></div>
+<img alt="Chronos Elite Smartwatch" class="w-full h-auto object-contain relative z-10 drop-shadow-2xl animate-[float_6s_ease-in-out_infinite]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvEMPfiQb8fraq2ngkYVcf8YYhgrzlTarwNHZbOwP9SwDu0iGAGdAuxiAAGCGA-UBN6EEsHh0VbavPI_TMB2ACeBPndVPFDs6WFk6ILHRNoQed2MF1wJWfXT39RsRAVLULxMwFoZv3PNLJIbsJL7yHY7tokJXooPS9IGtQ6uExFCMEFamF1-egxdtsEKZmZJmwlgHOTwpE_Pqt-MiO2dXuqtv7Qli3cVJqeciPG3Ys8Ruu-w0bQHNz-F9lKOgorb_ZdVw5Z0oSps4"/>
+</div>
+</div>
+</section>
+<!-- Connectivity Section -->
+<section class="py-section-padding-desktop bg-surface relative" id="design">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="grid md:grid-cols-12 gap-stack-lg items-center">
+<div class="md:col-span-5 md:order-2 flex flex-col gap-stack-md reveal">
+<h2 class="font-headline-md text-headline-md">Nunca perca o que importa.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        Mantenha-se conectado sem tirar o celular do bolso. Receba notificações instantâneas de WhatsApp, Instagram, e-mails e chamadas diretamente no seu pulso com clareza cristalina.
+                    </p>
+<ul class="flex flex-col gap-3 mt-4">
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                            Sincronização em tempo real
+                        </li>
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                            Respostas rápidas inteligentes
+                        </li>
+</ul>
+</div>
+<div class="md:col-span-7 md:order-1 reveal glass-card rounded-3xl p-8">
+<img alt="Notificações Smartwatch" class="w-full rounded-2xl shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk4C74NjhN9l4kU4Bg5LD1BreaQEO1G-Vg1DozU58JZwIKKPWMOpX5NeyWIqc8-oeZOxEMn2sb8JoUmBbudLJb03Td9hIiJhTJ54pVdX8JpEqCJRW3Xizx8TfBUI4a6iFxDqIbQZxTnFTWL9pP0J4EU-jmHzNz1_188E5bdm0ND_2Q7KBtivj6SEstgMfIN2M0iEzXhFEJmtkpBKKxoVzJxs2oKlwELHwfvYoV17euVkwgUrGANgx-fl-RypsQEY6BYLfjO-932sI"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Health Section (Bento Grid) -->
+<section class="py-section-padding-desktop bg-background" id="saude">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-stack-lg reveal">
+<h2 class="font-headline-md text-headline-md mb-4">Seu assistente pessoal de bem-estar 24/7</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Monitoramento contínuo para você alcançar sua melhor versão todos os dias.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-sm">
+<!-- Card 1 -->
+<div class="glass-card rounded-3xl p-6 flex flex-col justify-between reveal col-span-1 md:col-span-2">
+<div class="mb-6">
+<h3 class="font-bold text-xl mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">favorite</span>
+                            Monitoramento Cardíaco Avançado
+                        </h3>
+<p class="text-on-surface-variant">Acompanhamento preciso 24 horas por dia, com alertas de anomalias.</p>
+</div>
+<img alt="Monitoramento de Saúde" class="w-full h-64 object-cover rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJQSJy7beRG2pRMAgTT0dJjTCxMXF7fjV1Q8-ypSDN4fWAz3ro0tDjcCpIXUyhs_uZK8iMOEvAhzk11TeLOGckWTcLtHLqviHjOXxxEvXgabLmOmz680mTtGDYnsPshGmKIhhx5p83ZPOrpzkTgUds6lT198_8zL4ZJeA-eRmA_8U2zYWzOo7gGsFB_0QwVTrBZnlAK9bM4bKQcG5EH84r6-1-KP-kv43V_d8HpEk87yqehfhrJ2OlICdu3q2iumvj24vLEoloh9I"/>
+</div>
+<!-- Card 2 -->
+<div class="glass-card rounded-3xl p-6 flex flex-col justify-between reveal" style="transition-delay: 100ms;">
+<div class="mb-6">
+<h3 class="font-bold text-xl mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">record_voice_over</span>
+                            Voz AI &amp; Chamadas
+                        </h3>
+<p class="text-on-surface-variant">Atenda chamadas via Bluetooth e use o assistente de voz nativo.</p>
+</div>
+<img alt="Assistente de Voz" class="w-full h-48 object-cover rounded-2xl mt-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg3N8wivdlcvN0D0Lvx96chSrEvrnqbpTcHkiReLYU42PdxcNcFy2B7ekulksE9bE94EXlp36Rsg5EyiyXsyN_WYTPJswRh8GBosk2KKQ3nKmaDBNZmF4rvpUj33AZG_iDYNZzzAqm8ta6mzaWlPN5Z8VL3RL5-CJiC28G-0tBKDZQX-o2ePTYJKcA8x9ov5V9Q3NbRp2ng-vcbVq1341QxQ9NNRkY2tDUP2314c5M9pByp2UMVbR5Rp9qhcpKGLL4oV1PgSWa_og"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Personalization & Style -->
+<section class="py-section-padding-desktop bg-surface relative overflow-hidden">
+<div class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-stack-lg">
+<div class="flex flex-col gap-stack-md reveal">
+<h2 class="font-headline-md text-headline-md">Personalize seu tempo.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Mais de 100 mostradores dinâmicos para combinar com cada momento do seu dia, do treino à sala de reuniões.</p>
+<div class="mt-4 rounded-3xl overflow-hidden border border-surface-variant">
+<img alt="Mostradores Personalizados" class="w-full h-auto hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7haqfPqVN2LWcXjDHUfgfJ2msBYxMVgAIwaubXrnY32fZZxqTWoTyigBZtWa59JfhMFEriSMm5qOJmA1pZYCrXxfcrtsxyDzOpHktlQtWYTIrqVNZPVFAkUUXraxy4TozKE5_bvYQUnbdy2G6NZXLt7Kx-BxzlLy-7P-z5tlB7zsUS6Hx8Y968Mr7Ls7gYo-6NEtL8gkXJX53kjXwmiUJNgSpfhIiekCa5FjAd_K7r9R45zwUBfzDrelo9dclpUwnTj4w2P0ddHM"/>
+</div>
+</div>
+<div class="flex flex-col gap-stack-md reveal" style="transition-delay: 200ms;">
+<h2 class="font-headline-md text-headline-md">Estilo que impõe respeito.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Design premium exclusivo masculino, com pulseiras intercambiáveis que se adaptam à sua rotina.</p>
+<div class="mt-4 rounded-3xl overflow-hidden border border-surface-variant">
+<img alt="Estilo Masculino Premium" class="w-full h-auto hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCadmJIewqTnPhd0COq0xJpKxv4YpbL8ZVKZB5p8bK8c5OoGbJN9WrinxDH-UHvrI_2zK5umWlRq61z1-4u949F8dGQW51pgE25Glqzufh8oV-vqu6CBKGL62V8m4E9bADfXf0NWdn6ZOX3ybc3GrlAqnaYEuxkfrI9VqSw1RwtebJFLax57OKKAg9OvCZg9XvCsVtpnPSGD1v7NOjHUsiBq1F7x9ocIrwG8MksmvWbC8ebtsA1_GBdnaud9aOSmq_EHpm6UsE_X4A"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Specifications -->
+<section class="py-section-padding-desktop bg-background" id="especificacoes">
+<div class="max-w-container-max mx-auto px-gutter">
+<h2 class="font-headline-md text-headline-md text-center mb-stack-lg reveal">Especificações Técnicas</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-stack-md mb-stack-lg">
+<!-- Spec Items -->
+<div class="glass-card rounded-2xl p-6 text-center flex flex-col items-center gap-3 reveal">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'wght' 200;">water_drop</span>
+<span class="font-bold">Lembrete de Água</span>
+</div>
+<div class="glass-card rounded-2xl p-6 text-center flex flex-col items-center gap-3 reveal" style="transition-delay: 100ms;">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'wght' 200;">medication</span>
+<span class="font-bold">Lembrete Sedentário</span>
+</div>
+<div class="glass-card rounded-2xl p-6 text-center flex flex-col items-center gap-3 reveal" style="transition-delay: 200ms;">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'wght' 200;">directions_walk</span>
+<span class="font-bold">Contador de Passos</span>
+</div>
+<div class="glass-card rounded-2xl p-6 text-center flex flex-col items-center gap-3 reveal" style="transition-delay: 300ms;">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'wght' 200;">local_fire_department</span>
+<span class="font-bold">Gasto Calórico</span>
+</div>
+</div>
+<div class="glass-card rounded-3xl p-8 reveal max-w-3xl mx-auto text-center border-l-4 border-l-primary">
+<h3 class="font-bold text-xl mb-4">Idiomas Suportados</h3>
+<p class="text-on-surface-variant">Português, Inglês, Francês, Espanhol, Alemão, Italiano, Russo, Japonês, entre outros.</p>
+<div class="mt-6 flex justify-center items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined">verified</span>
+                    100% Original e Autêntico
+                </div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-stack-lg bg-surface-container-lowest">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter max-w-container-max mx-auto gap-stack-sm">
+<div class="font-display-lg-mobile text-display-lg-mobile text-on-surface">Chronos Elite</div>
+<div class="flex gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md opacity-80 hover:opacity-100" href="#">Privacidade</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md opacity-80 hover:opacity-100" href="#">Termos de Uso</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md opacity-80 hover:opacity-100" href="#">Suporte</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md opacity-80 hover:opacity-100" href="#">Garantia</a>
+</div>
+<div class="text-secondary font-body-md text-body-md">
+                © 2024 Chronos Elite. Todos os direitos reservados.
+            </div>
+</div>
+</footer>
+<!-- Floating Action Button -->
+<div class="fixed bottom-8 right-8 z-50">
+<button aria-label="Compre Agora" class="bg-primary-container text-on-primary-container font-bold rounded-full w-16 h-16 flex items-center justify-center glow-effect hover:scale-105 transition-all shadow-lg animate-pulse">
+<span class="material-symbols-outlined text-3xl">shopping_cart</span>
+</button>
+</div>
+<style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+<script>
+        // Scroll Reveal Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger on load
+    </script>
+</body></html>

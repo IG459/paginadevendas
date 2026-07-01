@@ -1,0 +1,106 @@
+/* ==========================================================================
+   Obsidian Tech Design System & Custom Utilities
+   Project: Chronos Elite - Smartwatch Premium
+   ========================================================================== */
+
+:root {
+    /* Color Palette */
+    --color-background: #111317;
+    --color-surface: #111317;
+    --color-surface-dim: #111317;
+    --color-surface-bright: #37393d;
+    --color-surface-lowest: #0c0e12;
+    --color-surface-low: #1a1c1f;
+    --color-surface-container: #1e2023;
+    --color-surface-high: #282a2e;
+    --color-surface-highest: #333539;
+    --color-on-surface: #e2e2e7;
+    --color-on-surface-variant: #c1c6d7;
+    
+    /* Brand Accent Colors */
+    --color-primary: #adc6ff;
+    --color-primary-container: #4b8eff;
+    --color-on-primary-container: #00285c;
+    --color-tech-blue: rgba(0, 122, 255, 1);
+    
+    /* Layout & Spacing */
+    --radius-sm: 0.25rem;
+    --radius-default: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-full: 9999px;
+    
+    /* Animations & Transitions */
+    --transition-duration: 300ms;
+    --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom Visual Effects */
+.glow-effect {
+    box-shadow: 0px 4px 20px rgba(0, 122, 255, 0.3);
+    transition: box-shadow var(--transition-duration) var(--transition-timing),
+                transform var(--transition-duration) var(--transition-timing);
+}
+
+.glow-effect:hover {
+    box-shadow: 0px 6px 28px rgba(0, 122, 255, 0.5);
+    transform: scale(1.02);
+}
+
+.glow-effect:active {
+    transform: scale(0.98);
+}
+
+/* Glassmorphism Card Style */
+.glass-card {
+    background: linear-gradient(135deg, rgba(28, 28, 30, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform var(--transition-duration) var(--transition-timing),
+                border-color var(--transition-duration) var(--transition-timing);
+}
+
+.glass-card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Parallax Background Utility */
+.parallax-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Float Keyframes & Classes */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Base Reveal Styles (for Fallback when JS is disabled) */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s var(--transition-timing),
+                transform 0.6s var(--transition-timing);
+}
+
+.reveal.active,
+.no-js .reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
